@@ -23,19 +23,19 @@ export interface Block_Height {
 
 export interface Bundle {
   readonly __typename?: 'Bundle';
-  readonly bnbPrice: Scalars['BigDecimal'];
+  readonly ethPrice: Scalars['BigDecimal'];
   readonly id: Scalars['ID'];
 }
 
 export interface Bundle_Filter {
-  readonly bnbPrice?: Maybe<Scalars['BigDecimal']>;
-  readonly bnbPrice_gt?: Maybe<Scalars['BigDecimal']>;
-  readonly bnbPrice_gte?: Maybe<Scalars['BigDecimal']>;
-  readonly bnbPrice_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
-  readonly bnbPrice_lt?: Maybe<Scalars['BigDecimal']>;
-  readonly bnbPrice_lte?: Maybe<Scalars['BigDecimal']>;
-  readonly bnbPrice_not?: Maybe<Scalars['BigDecimal']>;
-  readonly bnbPrice_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly ethPrice?: Maybe<Scalars['BigDecimal']>;
+  readonly ethPrice_gt?: Maybe<Scalars['BigDecimal']>;
+  readonly ethPrice_gte?: Maybe<Scalars['BigDecimal']>;
+  readonly ethPrice_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly ethPrice_lt?: Maybe<Scalars['BigDecimal']>;
+  readonly ethPrice_lte?: Maybe<Scalars['BigDecimal']>;
+  readonly ethPrice_not?: Maybe<Scalars['BigDecimal']>;
+  readonly ethPrice_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
   readonly id?: Maybe<Scalars['ID']>;
   readonly id_gt?: Maybe<Scalars['ID']>;
   readonly id_gte?: Maybe<Scalars['ID']>;
@@ -47,7 +47,7 @@ export interface Bundle_Filter {
 }
 
 export enum Bundle_OrderBy {
-  EthPrice = 'bnbPrice',
+  EthPrice = 'ethPrice',
   Id = 'id'
 }
 
@@ -348,6 +348,7 @@ export interface Query {
   readonly bundles: ReadonlyArray<Bundle>;
   readonly factories: ReadonlyArray<Factory>;
   readonly factory?: Maybe<Factory>;
+  readonly taalFactories: ReadonlyArray<TaalFactory>;
   readonly pair?: Maybe<Pair>;
   readonly pairSimple?: Maybe<PairSimple>;
   readonly pairSimples: ReadonlyArray<PairSimple>;
@@ -391,6 +392,14 @@ export interface QueryFactoriesArgs {
 export interface QueryFactoryArgs {
   block?: Maybe<Block_Height>;
   id: Scalars['ID'];
+}
+
+
+export interface QueryTaalFactoriesArgs {
+  block?: Maybe<Block_Height>;
+  first?: Maybe<Scalars['Int']>;
+  orderDirection?: Maybe<OrderDirection>;
+  skip?: Maybe<Scalars['Int']>;
 }
 
 
@@ -542,6 +551,18 @@ export interface SubscriptionTokensArgs {
   where?: Maybe<Token_Filter>;
 }
 
+export interface TaalFactory {
+  readonly __typename?: 'TaalFactory';
+  readonly id: Scalars['ID'];
+  readonly totalPairs: Scalars['BigInt'];
+  readonly totalTransactions: Scalars['BigInt'];
+  readonly totalVolumeUSD: Scalars['BigDecimal'];
+  readonly totalVolumeETH: Scalars['BigDecimal'];
+  readonly untrackedVolumeUSD: Scalars['BigDecimal'];
+  readonly totalLiquidityUSD: Scalars['BigDecimal'];
+  readonly totalLiquidityETH: Scalars['BigDecimal'];
+}
+
 export interface Token {
   readonly __typename?: 'Token';
   readonly decimals: Scalars['BigInt'];
@@ -680,6 +701,19 @@ export type TokenQuery = (
   & { readonly token?: Maybe<(
     { readonly __typename?: 'Token' }
     & Pick<Token, 'id' | 'name' | 'symbol' | 'derivedETH' | 'derivedUSD'>
+  )> }
+);
+
+export type TaalFactoryQueryVariables = Exact<{
+  limit: Scalars['Int'];
+}>;
+
+
+export type TaalFactoryQuery = (
+  { readonly __typename?: 'Query' }
+  & { readonly taalFactories: ReadonlyArray<(
+    { readonly __typename?: 'TaalFactory' }
+    & Pick<TaalFactory, 'totalLiquidityUSD'>
   )> }
 );
 

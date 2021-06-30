@@ -6,7 +6,7 @@ schema {
 }
 
 type Bundle {
-    bnbPrice: BigDecimal!
+    ethPrice: BigDecimal!
     id: ID!
 }
 
@@ -243,7 +243,7 @@ type _Meta_ {
 }
 
 enum Bundle_orderBy {
-    bnbPrice
+    ethPrice
     id
 }
 
@@ -306,14 +306,14 @@ input Block_height {
 }
 
 input Bundle_filter {
-    bnbPrice: BigDecimal
-    bnbPrice_gt: BigDecimal
-    bnbPrice_gte: BigDecimal
-    bnbPrice_in: [BigDecimal!]
-    bnbPrice_lt: BigDecimal
-    bnbPrice_lte: BigDecimal
-    bnbPrice_not: BigDecimal
-    bnbPrice_not_in: [BigDecimal!]
+    ethPrice: BigDecimal
+    ethPrice_gt: BigDecimal
+    ethPrice_gte: BigDecimal
+    ethPrice_in: [BigDecimal!]
+    ethPrice_lt: BigDecimal
+    ethPrice_lte: BigDecimal
+    ethPrice_not: BigDecimal
+    ethPrice_not_in: [BigDecimal!]
     id: ID
     id_gt: ID
     id_gte: ID
