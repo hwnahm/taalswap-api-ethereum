@@ -1,18 +1,18 @@
 # Documentation
 
-All PancakeSwap pairs consist of two different tokens. BNB is not a native currency in PancakeSwap, and is represented only by WBNB in the pairs. 
+All TaalSwap pairs consist of two different tokens. ETH is not a native currency in TaalSwap, and is represented only by WETH in the pairs. 
 
-The canonical WBNB address used by the PancakeSwap interface is `0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`.
+The canonical WETH address used by the TaalSwap interface is `0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`.
 
 Results are cached for 5 minutes (or 300 seconds).
 
-## [`/summary`](https://api.pancakeswap.info/api/summary)
+## [`/summary`](https://api.taalswap.info/api/summary)
 
-Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves. 
+Returns data for the top ~1000 TaalSwap pairs, sorted by reserves. 
 
 ### Request
 
-`GET https://api.pancakeswap.info/api/summary`
+`GET https://api.taalswap.info/api/summary`
 
 ### Response
 
@@ -25,20 +25,20 @@ Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves.
       "base_volume": "...",           // last 24h volume denominated in token0
       "quote_volume": "...",          // last 24h volume denominated in token1
       "liquidity": "...",             // liquidity denominated in USD
-      "liquidity_BNB": "..."          // liquidity denominated in BNB
+      "liquidity_ETH": "..."          // liquidity denominated in ETH
     },
     // ...
   }
 }
 ```
 
-## [`/tokens`](https://api.pancakeswap.info/api/tokens)
+## [`/tokens`](https://api.taalswap.info/api/tokens)
 
-Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves.
+Returns the tokens in the top ~1000 pairs on TaalSwap, sorted by reserves.
 
 ### Request
 
-`GET https://api.pancakeswap.info/api/tokens`
+`GET https://api.taalswap.info/api/tokens`
 
 ### Response
 
@@ -50,20 +50,20 @@ Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves.
       "name": "...",                  // not necessarily included for BEP20 tokens
       "symbol": "...",                // not necessarily included for BEP20 tokens
       "price": "...",                 // price denominated in USD
-      "price_BNB": "...",             // price denominated in BNB
+      "price_ETH": "...",             // price denominated in ETH
     },
     // ...
   }
 }
 ```
 
-## [`/tokens/0x...`](https://api.pancakeswap.info/api/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82)
+## [`/tokens/0x...`](https://api.taalswap.info/api/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82)
 
 Returns the token information, based on address.
 
 ### Request
 
-`GET https://api.pancakeswap.info/api/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82`
+`GET https://api.taalswap.info/api/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82`
 
 ### Response
 
@@ -74,18 +74,18 @@ Returns the token information, based on address.
     "name": "...",                    // not necessarily included for BEP20 tokens
     "symbol": "...",                  // not necessarily included for BEP20 tokens
     "price": "...",                   // price denominated in USD
-    "price_BNB": "...",               // price denominated in BNB
+    "price_ETH": "...",               // price denominated in ETH
   }
 }
 ```
 
-## [`/pairs`](https://api.pancakeswap.info/api/pairs)
+## [`/pairs`](https://api.taalswap.info/api/pairs)
 
-Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves.
+Returns data for the top ~1000 TaalSwap pairs, sorted by reserves.
 
 ### Request
 
-`GET https://api.pancakeswap.info/api/pairs`
+`GET https://api.taalswap.info/api/pairs`
 
 ### Response
 
@@ -93,7 +93,7 @@ Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves.
 {
   "updated_at": 1234567,              // UNIX timestamp
   "data": {
-    "0x..._0x...": {                  // the asset ids of BNB and BEP20 tokens, joined by an underscore
+    "0x..._0x...": {                  // the asset ids of ETH and BEP20 tokens, joined by an underscore
       "pair_address": "0x...",        // pair address
       "base_name": "...",             // token0 name
       "base_symbol": "...",           // token0 symbol
@@ -105,7 +105,7 @@ Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves.
       "base_volume": "...",           // volume denominated in token0
       "quote_volume": "...",          // volume denominated in token1
       "liquidity": "...",             // liquidity denominated in USD
-      "liquidity_BNB": "..."          // liquidity denominated in BNB
+      "liquidity_ETH": "..."          // liquidity denominated in ETH
     },
     // ...
   }

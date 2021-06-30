@@ -1,9 +1,9 @@
 {
-  "name": "PancakeSwap Exchange LITE",
+  "name": "TaalSwap Exchange LITE",
   "schemaPath": "schema.graphql",
   "extensions": {
     "endpoints": {
-      "PancakeSwap Exchange LITE": {
+      "TaalSwap Exchange LITE": {
         "url": "https://api.thegraph.com/subgraphs/name/taalswap/exchange-ropsten",
         "headers": {
           "user-agent": "JS GraphQL"

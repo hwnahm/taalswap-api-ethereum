@@ -16,15 +16,15 @@ export const TOKEN_BY_ADDRESS = gql`
       id
       name
       symbol
-      derivedBNB
+      derivedETH
       derivedUSD
     }
   }
 `;
 
 export const GET_TVL = gql`
-    query PancakeFactory($limit: Int!) {
-        pancakeFactories(first: $limit) {
+    query TaalFactory($limit: Int!) {
+        taalFactories(first: $limit) {
             totalLiquidityUSD
         }
     }
@@ -35,7 +35,7 @@ export const TOP_PAIRS = gql`
     id
     name
     symbol
-    derivedBNB
+    derivedETH
     derivedUSD
   }
 
@@ -57,7 +57,7 @@ export const TOP_PAIRS = gql`
       reserve1
       volumeToken0
       volumeToken1
-      reserveBNB
+      reserveETH
       reserveUSD
     }
   }
