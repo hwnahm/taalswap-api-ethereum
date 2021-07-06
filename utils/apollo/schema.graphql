@@ -13,6 +13,7 @@ type Bundle {
 type Factory {
     id: ID!
     pairCount: BigInt!
+    totalVolumeUSD: BigDecimal!
 }
 
 type TaalFactory {
@@ -24,6 +25,19 @@ type TaalFactory {
     untrackedVolumeUSD: BigDecimal!
     totalLiquidityUSD: BigDecimal!
     totalLiquidityETH: BigDecimal!
+}
+
+type TaalDayData {
+    id: ID!
+    date: Int!
+    dailyVolumeBNB: BigDecimal!
+    dailyVolumeUSD: BigDecimal!
+    dailyVolumeUntracked: BigDecimal!
+    totalVolumeBNB: BigDecimal!
+    totalLiquidityBNB: BigDecimal!
+    totalVolumeUSD: BigDecimal!
+    totalLiquidityUSD: BigDecimal!
+    totalTransactions: BigInt!
 }
 
 type Pair {
@@ -91,6 +105,13 @@ type Query {
         orderDirection: OrderDirection,
         skip: Int = 0
     ): [TaalFactory!]!
+    taalDayDatas(
+        "taalswap day data"
+        first: Int = 100,
+        orderBy: TaalDayData_orderBy,
+        orderDirection: OrderDirection,
+        skip: Int = 0
+    ): [TaalDayData!]!
     pair(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
@@ -262,6 +283,11 @@ enum PairSimple_orderBy {
     id
     token0
     token1
+}
+
+enum TaalDayData_orderBy {
+    id
+    date
 }
 
 enum Pair_orderBy {
