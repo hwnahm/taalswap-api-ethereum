@@ -20,7 +20,7 @@ interface ReturnShape {
   };
 }
 
-export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
+export default async function(req: VercelRequest, res: VercelResponse): Promise<void> {
   try {
     const topPairs = await getTopPairs();
 
@@ -41,7 +41,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
         base_volume: pair.previous24hVolumeToken0,
         quote_volume: pair.previous24hVolumeToken1,
         liquidity: pair.reserveUSD,
-        liquidity_ETH: pair.reserveETH,
+        liquidity_ETH: pair.reserveETH
       };
 
       return accumulator;

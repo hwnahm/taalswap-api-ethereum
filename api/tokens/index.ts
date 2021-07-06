@@ -12,7 +12,7 @@ interface ReturnShape {
   };
 }
 
-export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
+export default async function(req: VercelRequest, res: VercelResponse): Promise<void> {
   try {
     const topPairs = await getTopPairs();
 
@@ -24,7 +24,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
           name: token.name,
           symbol: token.symbol,
           price: token.derivedUSD,
-          price_ETH: token.derivedETH,
+          price_ETH: token.derivedETH
         };
       }
 
