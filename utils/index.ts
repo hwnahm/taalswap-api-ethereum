@@ -45,7 +45,7 @@ export async function getOneDayTransactionCnt(): Promise<number | undefined> {
   if (dayData.length === 0)
     return 0;
   else
-    return dayData[0].totalTransactions - dayData[1].totalTransactions;
+    return dayData[0]?.totalTransactions - dayData[1]?.totalTransactions;
 }
 
 export async function getOneDayVolumeUSD(): Promise<number | undefined> {
