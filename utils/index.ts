@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
 import { BLACKLIST } from "./constants/blacklist";
 import { client } from "./apollo/client";
-import { GET_TVL, PAIRS_VOLUME_QUERY, TOKEN_BY_ADDRESS, TOP_PAIRS } from "./apollo/queries";
+import { GET_TRX, GET_TVL, GET_VOLUME_USD, PAIRS_VOLUME_QUERY, TOKEN_BY_ADDRESS, TOP_PAIRS } from "./apollo/queries";
 import { getBlockFromTimestamp } from "./blocks/queries";
 import {
   PairsVolumeQuery,
@@ -26,11 +26,41 @@ export async function getTVL(): Promise<string | undefined> {
   const result = await client.query({
     query: GET_TVL,
     variables: {
-      limit: 1,
+      limit: 1
     },
-    fetchPolicy: "network-only",
+    fetchPolicy: "network-only"
   });
   return result?.data?.taalFactories?.[0]?.totalLiquidityUSD;
+}
+
+export async function getOneDayTransactionCnt(): Promise<number | undefined> {
+  const result = await client.query({
+    query: GET_TRX,
+    variables: {
+      limit: 2
+    },
+    fetchPolicy: "cache-first"
+  });
+  const dayData = result?.data?.taalDayDatas;
+  if (dayData.length === 0)
+    return 0;
+  else
+    return dayData[0].totalTransactions - dayData[1].totalTransactions;
+}
+
+export async function getOneDayVolumeUSD(): Promise<number | undefined> {
+  const result = await client.query({
+    query: GET_VOLUME_USD,
+    variables: {
+      limit: 1
+    },
+    fetchPolicy: "cache-first"
+  });
+  const dayData = result?.data?.taalDayDatas;
+  if (dayData.length === 0)
+    return 0;
+  else
+    return dayData[0].dailyVolumeUSD;
 }
 
 export async function getTokenByAddress(address: string): Promise<Token> {
